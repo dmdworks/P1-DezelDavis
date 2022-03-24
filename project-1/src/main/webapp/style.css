@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+
+html, body {
+	height: 100%;
+	text-align: center;
+	background-color: #444444;
+}
+
+.logform{
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 20%;
+	display: inline-flex;
+	text-align: center;
+	color: white;
+	padding: 5%;
+	margin-top: 3%;
+	/*background-color: #1E1E1E;*/
+}
+
+input, label, button {
+	margin: 1%;
+	font-size: 1.2rem;
+}
+
+footer{
+	color: white;
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+}

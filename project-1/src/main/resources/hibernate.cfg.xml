@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- SQL Dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		
+		<!-- Database Connection Settings -->
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test_db</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">SomeQuestionsL@st4</property>
+	 
+		<!-- Connection Pool Size (built-in) -->
+		<property name="hibernate.connection.pool.size">1</property>
+	 
+		<!-- show all generate SQL query -->
+		<property name="show_sql">false</property>
+	 
+		<!-- Drop the existing tables and create new one --> 
+		<property name="hbm2ddl.auto">update</property>
+	 
+		<!-- Mention here all the model classes along with their package name --> 
+		<mapping class="com.revature.beans.User"/>
+		<mapping class="com.revature.beans.Reimb"/>
+	</session-factory> 
+</hibernate-configuration>
