@@ -17,7 +17,7 @@
 	</nav>
 	
 	<div class="logform bg-dark">
-		<form action=<% request.getContextPath(); %>"SiteController" method="post">
+		<form action="<% request.getContextPath(); %>SiteController?action=login" method="post">
 			<label>Username:</label><input type="text" name="username" value="" placeholder="john23@revature.com"><br/>
 			<label>Password:</label><input type="password" name="pass" value=""><br/>
 			<button type="submit" class="btn btn-primary">Login</button>

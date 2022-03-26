@@ -42,6 +42,10 @@ public class EmpController extends HttpServlet {
 		fs.read(rImg);
 		fs.close();
 		reimb.setRecImg(rImg);
+		
+		System.out.println(reimb);
+		System.out.println(reimb.getRecImg().length);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }

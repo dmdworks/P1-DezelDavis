@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="user" class="com.revature.beans.User" scope="session" />
+<jsp:setProperty property="*" name="user"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +18,11 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
-		<h1 class="navbar-brand">Revature</h1>
+		<h1 class="navbar-brand">${user.getUsername()}</h1>
 	</nav>
-
+	${user.getFirstName()}
 	<div>
-		<form action="" method="post" autocomplete="on">
+		<form action=<% request.getContextPath(); %>"EmpController" method="post" autocomplete="on">
 			<label>Type of Expense:</label><br />
 				<input type=radio name="type" value="TRAVEL" checked>Travel
 				<input type="radio"name="type" value="LODGING">Lodging
