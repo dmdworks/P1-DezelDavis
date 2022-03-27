@@ -72,11 +72,11 @@ public class Reimb {
 	public void setResolved() {
 		this.resolved = LocalDateTime.now();
 	}
-	public String getDesc() {
+	public String getDescript() {
 		return descript;
 	}
-	public void setDesc(String desc) {
-		this.descript = desc;
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public int getAuthorId() {
 		return authorId;

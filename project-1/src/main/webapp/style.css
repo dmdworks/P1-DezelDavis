@@ -2,21 +2,59 @@
 
 html, body {
 	height: 100%;
-	text-align: center;
+	margin: 0%;
+	padding: 0%;
+	/*background-color: #444444;*/
+}
+
+nav, footer{
 	background-color: #444444;
+	color: white;
+	padding: 1%;
+	margin: 0%;
+	width: 100%;
+}
+
+img {
+	flex:50%;
+}
+
+.logbody{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	height: 100%;
+}
+
+.logview{
+	padding: 10%;
+	text-align: center;
+	flex: 50%;
+	background-image: url("images/logbackimg.png");
+	background-size: cover;
+}
+
+
+.logview h3{
+	background-color: white;
 }
 
 .logform{
-	border-width: 1px;
+	border-width: 2px;
 	border-style: solid;
-	border-color: white;
-	border-radius: 20%;
-	display: inline-flex;
+	border-color: black;
+	border-radius: 10%;
+	background-color: white;
+	display: inline-block;
 	text-align: center;
-	color: white;
-	padding: 5%;
-	margin-top: 3%;
+	color: black;
+	padding: 4%;
+	margin: 2%;
 	/*background-color: #1E1E1E;*/
+}
+
+.logform form{
+	display: inline;
 }
 
 input, label, button {
@@ -25,11 +63,9 @@ input, label, button {
 }
 
 footer{
-	color: white;
-	display: block;
-	position: absolute;
-	bottom: 0px;
 	text-align: center;
-	width: 100%;
-	padding: 1%;
+}
+
+.pop-up-hide{
+	display: none;
 }

@@ -15,14 +15,15 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-		<h1 class="navbar-brand">${user.getUsername()}</h1>
+	<nav class="">
+		<h1 class="navbar-brand">Revature</h1>
 	</nav>
-	${user.getFirstName()}
-	<div>
-		<form action=<% request.getContextPath(); %>"EmpController" method="post" autocomplete="on">
+	<h1>Hello, ${user.getFirstName()}</h1>
+	<div class="logform">
+		<form action=<% request.getContextPath(); %>"SiteController" method="post" autocomplete="on">
 			<label>Type of Expense:</label><br />
 				<input type=radio name="type" value="TRAVEL" checked>Travel
 				<input type="radio"name="type" value="LODGING">Lodging
@@ -31,14 +32,16 @@
 			<label>Expense Amount:</label><br />
 				$<input type="number" name="amount" required autofocus /><br />
 			<label>Description:</label><br />
-				<textarea rows="15" cols="80" name="desc" required></textarea><br />
+				<textarea rows="15" cols="80" name="desc" style="resize: none" required></textarea><br />
 			<label>Image:</label><br />
 				<input type="file" name="recipt" accept="image/png,image/jpeg,image/jpg" /><br />
+			<input type="hidden" name="action" value="createReimb" />
 			<button type="submit">Submit Form</button>
 		</form>
 	</div>
-
-	<footer class="bg-dark">
+	
+	<a href="?action=getReimbs">Click to view reimbs!</a>
+	<footer class="">
 		<p>Copyright by Revature</p>
 	</footer>
 

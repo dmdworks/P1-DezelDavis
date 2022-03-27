@@ -12,19 +12,26 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
+	<nav class="">
 		<h1 class="navbar-brand">Revature</h1>
 	</nav>
 	
-	<div class="logform bg-dark">
-		<form action="<% request.getContextPath(); %>SiteController?action=login" method="post">
-			<label>Username:</label><input type="text" name="username" value="" placeholder="john23@revature.com"><br/>
-			<label>Password:</label><input type="password" name="pass" value=""><br/>
-			<button type="submit" class="btn btn-primary">Login</button>
-		</form>
+	<div class="logbody">
+		<img src="images/greetpic.jpg" width="200" height="100%" />
+		<div class="logview">
+			<h3>Hello, valued team member. Please sign in.</h3>
+			<div class="logform">
+				<form action="<% request.getContextPath(); %>SiteController?action=login" method="post">
+					<label>Username:</label><input type="text" name="username" value=""><br/>
+					<label>Password:</label><input type="password" name="pass" value=""><br/>
+					<button type="submit" class="">Login</button>
+				</form>
+			</div>
+		</div>
 	</div>
 	
-	<footer class="bg-dark">
+	
+	<footer class="">
 		<p>Copyright by Revature</p>
 	</footer>
 	
