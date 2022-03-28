@@ -41,8 +41,8 @@
 			<label class="form-label">Amount: ${r.amount}</label>
 			<label class="form-label">Expense Type: ${r.type}</label><br/>
 			<label class="form-label">Description: ${r.descript}</label><br/>
-			<label class="form-label">Author: ${r.author.username}</label>
-			<label class="form-label">Resolver: ${r.resolver.username}</label>
+			<label class="form-label">Author: ${r.author.firstName} ${r.author.lastName}</label>
+			<label class="form-label">Resolver: ${r.resolver.firstName} ${r.resolver.lastName}</label>
 			<label class="form-label">Status: ${r.status}</label><br/>
 			<button class="btn btn-secondary" type="button" onclick=plsclick(${r.reimb_id})>View Receipt Image</button><br/>
 			<img id="pic${r.reimb_id}" class="pop-up-hide" src="temp/recpic${r.reimb_id}.jpg" width="600" height="800" />

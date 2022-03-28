@@ -11,10 +11,12 @@ import org.hibernate.Transaction;
 
 import com.revature.beans.User;
 import com.revature.utils.HibernateUtil;
+import org.apache.log4j.Logger;
 
 public class UserDaoHibernate{
 	private SessionFactory sessionFactory;
 	private Session session;
+	static Logger log = Logger.getLogger(ReimbDaoHibernate.class.getName());
 	
 	public UserDaoHibernate() {
 		sessionFactory = HibernateUtil.getHibUtil().getFactory();
@@ -54,7 +56,7 @@ public class UserDaoHibernate{
 			session.close();
 			return user;
 		}catch(NoResultException e) {
-			//Add logger here
+			log.debug("Could not find user in DB");
 		}finally {
 			session.close();
 		}
