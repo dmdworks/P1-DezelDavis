@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,10 +35,11 @@ public class Reimb {
 	private String descript;
 	@Column(columnDefinition="mediumblob")
 	private byte[] recImg;
-	@Column
-	private int authorId;
-	@Column
-	private int resolverId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	User author;
+	@ManyToOne
+	User resolver;
 	@Column
 	private reimbType type;
 	@Column
@@ -78,18 +81,6 @@ public class Reimb {
 	public void setDescript(String descript) {
 		this.descript = descript;
 	}
-	public int getAuthorId() {
-		return authorId;
-	}
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-	public int getResolverId() {
-		return resolverId;
-	}
-	public void setResolverId(int resolverId) {
-		this.resolverId = resolverId;
-	}
 	public reimbType getType() {
 		return type;
 	}
@@ -108,11 +99,23 @@ public class Reimb {
 	public void setRecImg(byte[] recImg) {
 		this.recImg = recImg;
 	}
+	public User getAuthor() {
+		return author;
+	}
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+	public User getResolver() {
+		return resolver;
+	}
+	public void setResolver(User resolver) {
+		this.resolver = resolver;
+	}
 	
 	@Override
 	public String toString() {
 		return "Reimb [reimb_id=" + reimb_id + ", amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
-				+ ", descript=" + descript + ", authorId=" + authorId + ", resolverId=" + resolverId + ", type=" + type
+				+ ", descript=" + descript + ", author=" + author + ", resolver=" + resolver + ", type=" + type
 				+ ", status=" + status + "]";
 	}
 	

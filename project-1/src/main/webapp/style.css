@@ -7,16 +7,18 @@ html, body {
 	/*background-color: #444444;*/
 }
 
-nav, footer{
-	background-color: #444444;
-	color: white;
-	padding: 1%;
-	margin: 0%;
-	width: 100%;
+footer{
+ text-align: center;
 }
 
 img {
 	flex:50%;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 1%;
 }
 
 .logbody{
@@ -58,12 +60,8 @@ img {
 }
 
 input, label, button {
-	margin: 1%;
+	margin: 0.5%;
 	font-size: 1.2rem;
-}
-
-footer{
-	text-align: center;
 }
 
 .pop-up-hide{

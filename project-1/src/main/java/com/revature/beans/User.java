@@ -2,10 +2,16 @@ package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.revature.beans.Reimb;
 
 @Entity
 @Table(name="users")
@@ -29,6 +35,10 @@ public class User {
 	private String email;
 	@Column
 	private userRole role;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy ="author")
+	private List<Reimb> reimbList;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy ="resolver")
+	private List<Reimb> resList = new ArrayList<>();
 	
 	public User() {
 	
@@ -86,6 +96,21 @@ public class User {
 	}
 	public void setRole(userRole role) {
 		this.role = role;
+	}
+	public List<Reimb> getReimbList() {
+		return reimbList;
+	}
+
+	public void setReimbList(List<Reimb> reimbList) {
+		this.reimbList = reimbList;
+	}
+
+	public List<Reimb> getResList() {
+		return resList;
+	}
+
+	public void setResList(List<Reimb> resList) {
+		this.resList = resList;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <jsp:useBean id="r" class="com.revature.beans.Reimb" scope="request" />
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@
 	
 <div>
 	<div class="container" style="margin:auto; height:100%;">
-	<h1>Your Reimbursements Information</h1>
+		<h1>Employee Reimbursement Requests</h1>
 		<c:forEach items='<%=request.getAttribute("rList")%>' var="r">
 		<div style="border:1px solid black;">
 			<label class="form-label">ID: ${r.reimb_id}</label>
@@ -44,16 +44,27 @@
 			<label class="form-label">Author: ${r.author.username}</label>
 			<label class="form-label">Resolver: ${r.resolver.username}</label>
 			<label class="form-label">Status: ${r.status}</label><br/>
-			<button class="btn btn-secondary" type="button" onclick=plsclick(${r.reimb_id})>View Receipt Image</button><br/>
+			<button class="btn btn-secondary" type="button" onclick=plsclick(${r.reimb_id})>View Receipt Image</button>
+			<form action=<% request.getContextPath(); %>"SiteController" method="post" style="display:inline-block;">
+				<input type="hidden" name="action" value="appReimb"/>
+				<input type="hidden" name="id" value="${r.reimb_id}"/>
+				<button class="btn btn-secondary" type="submit">Approve</button>
+			</form>
+			<form action=<% request.getContextPath(); %>"SiteController" method="post" style="display:inline-block;">
+				<input type="hidden" name="action" value="denReimb"/>
+				<input type="hidden" name="id" value="${r.reimb_id}"/>
+				<button class="btn btn-secondary" type="submit">Deny</button>
+			</form><br/>
 			<img id="pic${r.reimb_id}" class="pop-up-hide" src="temp/recpic${r.reimb_id}.jpg" width="600" height="800" />
 		</div>
 		</c:forEach>
 	</div>
-	
-	<footer class="container-fluid bg-dark" style="padding:1%; position:relative; bottom:0px;">
+
+	<footer class="container-fluid bg-dark" style="padding:1%; position:relative; bottom:0;">
 		<p style="color:white; margin:1%;"><%= new java.util.Date().getYear()+1900 %> Copyright by Revature</p>
 	</footer>
 </div>
+	
 
 <script>
 	function plsclick(id){

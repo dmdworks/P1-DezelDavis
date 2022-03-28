@@ -9,9 +9,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.revature.beans.Reimb;
+import com.revature.beans.User;
 import com.revature.utils.HibernateUtil;
 
-public class ReimbDaoHibernate implements ReimbDAO{
+public class ReimbDaoHibernate{
 	private SessionFactory sessionFactory;
 	private Session session;
 	
@@ -19,7 +20,6 @@ public class ReimbDaoHibernate implements ReimbDAO{
 		sessionFactory = HibernateUtil.getHibUtil().getFactory();
 	}
 	
-	@Override
 	public void addReimb(Reimb r) {
 		session = sessionFactory.openSession();
 		Transaction tran = session.beginTransaction();
@@ -27,17 +27,55 @@ public class ReimbDaoHibernate implements ReimbDAO{
 		tran.commit();
 		session.close();
 	}
+	
+	public Reimb getReimb(int id) {
+		session = sessionFactory.openSession();
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE reimb_id="+id, Reimb.class);
+		Reimb reimb = query.getSingleResult();
+		session.close();
+		return reimb;
+	}
 
-	@Override
 	public List<Reimb> getReimbsByUser(int id) {
 		session = sessionFactory.openSession();
-		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE authorId="+id, Reimb.class);
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE user_id="+id, Reimb.class);
+		List<Reimb> reimb = query.getResultList();
+		session.close();
+		return reimb;
+	}
+	
+	public List<Reimb> getReimbsByPending() {
+		session = sessionFactory.openSession();
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE status=0", Reimb.class);
+		List<Reimb> reimb = query.getResultList();
+		session.close();
+		return reimb;
+	}
+	
+	public List<Reimb> getReimbsByPending(int id) {
+		session = sessionFactory.openSession();
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE status=0 AND user_id="+id, Reimb.class);
+		List<Reimb> reimb = query.getResultList();
+		session.close();
+		return reimb;
+	}
+	
+	public List<Reimb> getReimbsByResolved() {
+		session = sessionFactory.openSession();
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE status=1 OR status=2", Reimb.class);
+		List<Reimb> reimb = query.getResultList();
+		session.close();
+		return reimb;
+	}
+	
+	public List<Reimb> getReimbsByResolved(int id) {
+		session = sessionFactory.openSession();
+		TypedQuery<Reimb> query = session.createQuery("FROM Reimb WHERE (status=1 OR status=2) AND user_id="+id, Reimb.class);
 		List<Reimb> reimb = query.getResultList();
 		session.close();
 		return reimb;
 	}
 
-	@Override
 	public List<Reimb> getAllReimbs() {
 		session = sessionFactory.openSession();
 		TypedQuery<Reimb> query = session.createQuery("FROM Reimb", Reimb.class);
@@ -46,7 +84,6 @@ public class ReimbDaoHibernate implements ReimbDAO{
 		return reimb;
 	}
 
-	@Override
 	public void deleteReimb(Reimb r) {
 		session = sessionFactory.openSession();
 		Transaction tran = session.beginTransaction();
@@ -55,11 +92,10 @@ public class ReimbDaoHibernate implements ReimbDAO{
 		session.close();
 	}
 
-	@Override
 	public void updateReimb(Reimb r) {
 		session = sessionFactory.openSession();
 		Transaction tran = session.beginTransaction();
-		session.delete(r);
+		session.update(r);
 		tran.commit();
 		session.close();
 	}

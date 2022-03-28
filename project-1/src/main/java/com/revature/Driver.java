@@ -17,7 +17,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		//Testing User creation and retrieval
-		UserDAO userDao = new UserDaoHibernate();
+		UserDaoHibernate userDao = new UserDaoHibernate();
 		/*
 		User newUser = new User();
 		newUser.setUsername("DDavis76");
@@ -29,29 +29,29 @@ public class Driver {
 		
 		userDao.addUser(newUser);
 		
-		
+		*/
 		User newUser = new User();
 		newUser.setUsername("FJPlayer3");
-		newUser.setPassword("Player123");
+		newUser.setPassword("123");
 		newUser.setFirstName("Fred");
 		newUser.setLastName("Joseph");
 		newUser.setEmail("fjplayer@gmail.com");
 		newUser.setRole(User.userRole.MANAGER);
 		
 		userDao.addUser(newUser);
-		*/
-		User currUser = userDao.getUser(1);
-		System.out.println(currUser);
+		
+		//User currUser = userDao.getUser(1);
+		//System.out.println(currUser);
 		
 		//Test reimb creation
-		ReimbDAO reimbDao = new ReimbDaoHibernate();
+		//ReimbDaoHibernate reimbDao = new ReimbDaoHibernate();
 		/*
 		Reimb reimb = new Reimb();
 		reimb.setAmount(34);
-		reimb.setDesc("Ate at Wendy's for lunch.");
+		reimb.setDescript("Ate at Wendy's for lunch.");
 		reimb.setType(Reimb.reimbType.FOOD);
 		reimb.setStatus(Reimb.reimbStatus.PENDING);
-		reimb.setAuthorId(1);
+		reimb.setAuthor(currUser);
 		reimb.setSubmitted();
 		
 		File imgFile = new File("C:\\Users\\Dezel\\Documents\\Goddess.jpg");
@@ -68,7 +68,8 @@ public class Driver {
 		
 		reimbDao.addReimb(reimb);
 		*/
-		List<Reimb> curReimb=reimbDao.getReimbsByUser(1);
-		System.out.println(curReimb);
+		//List<Reimb> curReimb=reimbDao.getReimbsByPending(1);
+		//System.out.println(curReimb);
+		//System.out.println(currUser.getReimbList());
 	}
 }
